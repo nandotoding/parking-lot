@@ -10,7 +10,7 @@ export class ParkingLotService {
             setTimeout(() => {
                 this.parkingLot.capacity = cap;
                 resolve(`Successfully created parking lot with a capacity of ${cap} cars`);
-            }, 1000)
+            }, 5000)
         });
     };
 
@@ -26,7 +26,7 @@ export class ParkingLotService {
                     reject(`${car.owner}'car with license number ${car.licNum} has been parked`);
                 }
                 reject('Parking Lot is full');
-            }, 1000)
+            }, 3000)
         });
     };
 
@@ -42,7 +42,7 @@ export class ParkingLotService {
                     }
                 }
                 reject(`There is no car with license number ${licNum}`);
-            }, 1000);
+            }, 1500);
         });
     }
 
@@ -55,7 +55,7 @@ export class ParkingLotService {
                    parkedCars: this.parkingLot.cars
                };
                resolve(info);
-           }, 1000);
+           }, 500);
         });
     };
 }
