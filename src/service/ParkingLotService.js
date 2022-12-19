@@ -17,15 +17,17 @@ export class ParkingLotService {
     park = (car) => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                if (this.parkingLot.cars.length < this.parkingLot.capacity) {
+                if (this.parkingLot.capacity !== 0) {
                     if (!this.parkingLot.cars.includes(car)) {
                         this.parkingLot.cars.push(car);
                         this.parkingLot.capacity--;
                         resolve(`Successfully parked ${car.owner}'s car with license number ${car.licNum}`);
+                    } else {
+                        return reject(`${car.owner}'car with license number ${car.licNum} has been parked`);
                     }
-                    reject(`${car.owner}'car with license number ${car.licNum} has been parked`);
+                } else {
+                    reject('Parking Lot is full');
                 }
-                reject('Parking Lot is full');
             }, 3000)
         });
     };
